@@ -1,0 +1,11 @@
+<%- include("../partials/header") %>
+    <script src="https://kit.fontawesome.com/a8d80231ea.js" crossorigin="anonymous"></script>
+    <a href="/skills">Back to skills</a>
+    <h1><%= title %>  <i class="<%= skill.icon %>"></i></h1>
+    <div>
+        <h3>Learned?</h3>
+        <p><%- skill.learned ? 'YES' : "NO" %></p>
+
+    </div>
+
+<%- include("../partials/footer") %>

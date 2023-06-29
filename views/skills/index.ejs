@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+    <script src="https://kit.fontawesome.com/a8d80231ea.js" crossorigin="anonymous"></script>
+    <a href="/">Back to home</a>
+    <h1><%= title %></h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="w-2" scope="row"></th>
+                    <th scope="row">Skill</th>
+                    <th scope="row">Learned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% skills.forEach((skill, i) => { %>
+                    <tr <%= i % 2 === 0 ? 'class="table-striped"' : ''%>>
+                        <td></td>
+                        <td>
+                            <i class="w-2 <%= skill.icon %>"></i> <a href="/skills/<%= skill._id %>"><%= skill.name %></a>
+                        </td>
+                        <td class="text-centered"><%- skill.learned ? '<i class="fa-solid fa-check"></i>' : "" %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+
+        </table>
+    </div>
+
+<%- include("../partials/footer") %>

@@ -6,3 +6,27 @@ body {
 a {
   color: #00B7FF;
 }
+
+.text-centered {
+  text-align: center;
+}
+
+.w-1 {
+  width: 1em;
+}
+
+.w-2 {
+  width: 2em;
+}
+
+.w-3 {
+  width: 3em;
+}
+
+.w-4 {
+  width: 4em;
+}
+
+.text-deco-none {
+  text-decoration: none;
+}
