@@ -2,8 +2,8 @@
     <script src="https://kit.fontawesome.com/a8d80231ea.js" crossorigin="anonymous"></script>
     <a href="/">Back to home</a>
     <h1><%= title %></h1>
-    <div>
-        <table>
+    <div class="container">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th class="w-2" scope="row"></th>
@@ -13,12 +13,12 @@
             </thead>
             <tbody>
                 <% skills.forEach((skill, i) => { %>
-                    <tr <%= i % 2 === 0 ? 'class="table-striped"' : ''%>>
+                    <tr>
                         <td></td>
                         <td>
                             <i class="w-2 <%= skill.icon %>"></i> <a href="/skills/<%= skill._id %>"><%= skill.name %></a>
                         </td>
-                        <td class="text-centered"><%- skill.learned ? '<i class="fa-solid fa-check"></i>' : "" %></td>
+                        <td><%- skill.learned ? '<i class="fa-solid fa-check"></i>' : "" %></td>
                     </tr>
                 <% }); %>
             </tbody>
