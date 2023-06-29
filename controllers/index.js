@@ -1,5 +1,5 @@
-
-function index(req, res, next) {
+// Main "/" index controller
+ function index(req, res, next) {
     res.render('index', { title: 'Express Dev Skills' });
 }
 

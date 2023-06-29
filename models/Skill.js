@@ -1,4 +1,5 @@
 
+// mock database
 const skills = [
     {_id: "fed24812feabc35124", name: "HTML5", learned: true, icon: "fa-brands fa-html5"},
     {_id: "fed24812feabc35125", name: "CSS3", learned: true, icon: "fa-brands fa-css3-alt"},
@@ -21,7 +22,7 @@ function getAll() {
     return skills;
 }
 
-// Exports
+
 module.exports = {
     getOne,
     getAll,

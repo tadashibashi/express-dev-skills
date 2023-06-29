@@ -1,5 +1,8 @@
+// Controller for "/skills" router
+
 const Skill = require("../models/Skill");
 
+// /skills
 function index(req, res, next) {
     res.render("skills", {
       title: "Dev Skills",
@@ -7,6 +10,8 @@ function index(req, res, next) {
     });
 }
 
+// /skills/:id
+// get and display one skill
 function show(req, res, next) {
     const skill = Skill.getOne(req.params["id"]);
     if (skill === null) {
