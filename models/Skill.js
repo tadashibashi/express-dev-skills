@@ -1,5 +1,14 @@
+/**
+ * @interface Skill
+ * @property _id {number}      - db id number
+ * @property name {string}     - name of skill
+ * @property learned {boolean} - whether skill is learned
+ * @property icon {string}     - font awesome icon class string
+ */
 
-// mock database
+/**
+ * @type Skill[]
+ */
 const skills = [
     {_id: 12345, name: "HTML5", learned: true, icon: "fa-brands fa-html5"},
     {_id: 12346, name: "CSS3", learned: true, icon: "fa-brands fa-css3-alt"},
@@ -23,6 +32,7 @@ function getOne(id) {
 
 /**
  * Get skills array
+ * @returns {Skill[]}
  */
 function getAll() {
     return skills;
@@ -58,6 +68,7 @@ function deleteOne(id) {
 
     return false;
 }
+
 
 /**
  * Update a pre-existing skill
