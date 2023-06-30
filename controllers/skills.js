@@ -1,6 +1,10 @@
-// Controller for "/skills" router
+// Controller for "/skills" Router
 
+// ===== Models ===============================================================
 const Skill = require("../models/Skill");
+
+
+// ===== Route Handlers =======================================================
 
 // GET /skills
 // Display all skills
@@ -111,7 +115,8 @@ module.exports = {
  */
 function _parseId(id) {
     if (id === undefined) {
-        console.trace("Attempted to view update form for Skill, but could not retrieve 'id'");
+        console.trace("Attempted to view update form for Skill, " +
+            "but could not retrieve 'id'");
         return -1;
     }
 
@@ -132,7 +137,8 @@ function _parseId(id) {
 function _getFormData(req, obj = {}) {
     const name = req.body["name"];
     if (name === undefined) {
-        console.trace("Attempted to update Skill with id " + id + ", but 'name' was undefined!");
+        console.trace("Attempted to update Skill with id " + id +
+            ", but 'name' was undefined!");
         return obj;
     }
 
@@ -140,7 +146,8 @@ function _getFormData(req, obj = {}) {
 
     const icon = req.body["icon"];
     if (icon === undefined) {
-        console.trace("Attempted to update Skill with id " + id + ", but 'icon' was undefined!");
+        console.trace("Attempted to update Skill with id " + id +
+            ", but 'icon' was undefined!");
         return obj;
     }
 
