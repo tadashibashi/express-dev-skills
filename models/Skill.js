@@ -49,11 +49,12 @@ function getAll() {
 /**
  * Add a skill to the db
  * @param skillName {string}
+ * @param icon {string} font awesome class names
  */
-function addOne(skillName) {
+function addOne(skillName, icon = "") {
     skills.push({
         _id: currentId++,
-        icon: "",
+        icon,
         name: skillName,
         learned: false,
     });

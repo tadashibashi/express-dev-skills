@@ -48,21 +48,9 @@ function update(req, res) {
     const id = _parseId(req.params["id"]);
     if (id === -1) return;
 
-    const name = req.body["name"];
-    if (name === undefined) {
-        console.trace("Attempted to update Skill with id " + id + ", but 'name' was undefined!");
-        return;
-    }
+    const data = _getFormData(req);
 
-    const learned = (req.body["learned"] !== undefined);
-
-    const icon = req.body["icon"];
-    if (icon === undefined) {
-        console.trace("Attempted to update Skill with id " + id + ", but 'icon' was undefined!");
-        return;
-    }
-
-    Skill.updateOne(id, name, learned, icon);
+    Skill.updateOne(id, data.name, data.learned, data.icon);
 
     res.redirect("/skills");
 }
@@ -83,11 +71,30 @@ function updateForm(req, res) {
     res.render("skills/update-form");
 }
 
+
+// POST /skills
+// Handle submitted create form
+function create(req, res) {
+    const data = _getFormData(req);
+
+    Skill.addOne(data.name, data.icon);
+
+    res.redirect("/skills");
+}
+
+
+// GET /skills/create
+// Display skill create form
+function createForm(req, res) {
+    res.render("skills/create-form");
+}
+
+
 module.exports = {
     index,
     show,
-    //create,
-    //createForm,
+    create,
+    createForm,
     update,
     updateForm,
     remove,
@@ -114,4 +121,32 @@ function _parseId(id) {
     }
 
     return idNum;
+}
+
+/**
+ * Grabs data from the front-end form
+ * @param obj optional object to provide
+ * @returns {{name: string, learned: boolean, icon: string}}
+ * @private
+ */
+function _getFormData(req, obj = {}) {
+    const name = req.body["name"];
+    if (name === undefined) {
+        console.trace("Attempted to update Skill with id " + id + ", but 'name' was undefined!");
+        return obj;
+    }
+
+    const learned = (req.body["learned"] !== undefined);
+
+    const icon = req.body["icon"];
+    if (icon === undefined) {
+        console.trace("Attempted to update Skill with id " + id + ", but 'icon' was undefined!");
+        return obj;
+    }
+
+    obj.name = name;
+    obj.icon = icon;
+    obj.learned = learned;
+
+    return obj;
 }
