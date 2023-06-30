@@ -26,7 +26,14 @@ let currentId = 12350;
  * @param id {number} - id of the skill
  */ 
 function getOne(id) {
-    return skills.find(skill => skill._id === id) || null;
+    const skill = skills.find(skill => skill._id === id);
+
+    if (skill === undefined) {
+        console.trace("Tried to get skill, but it did not exist in db.");
+        return null;
+    }
+
+    return skill;
 }
 
 

@@ -30,3 +30,9 @@ a {
 .text-deco-none {
   text-decoration: none;
 }
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  color: #00000000;
+}

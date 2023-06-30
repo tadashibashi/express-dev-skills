@@ -1,6 +1,10 @@
 // Main "/" index controller
  function index(req, res, next) {
-    res.render('index', { title: 'Express Dev Skills' });
+    res.locals.vars = {
+     title: '',
+    };
+
+    res.render('index');
 }
 
 module.exports = {

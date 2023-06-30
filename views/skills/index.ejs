@@ -5,7 +5,8 @@
     <!-- Link back home -->
     <a class="link" href="/">Back to home</a>
 
-    <h1><%= title %></h1>
+
+    <h1 class="mt-2">Skills</h1>
 
     <!-- Skill Table -->
     <div class="container">
@@ -15,21 +16,77 @@
                     <th class="w-2" scope="row"></th>
                     <th scope="row">Skill</th>
                     <th scope="row">Learned</th>
+                    <th scope="row"></th>
                 </tr>
             </thead>
             <tbody>
-                <% skills.forEach((skill, i) => { %>
-                    <tr>
+                <% vars.skills.forEach((skill, i) => { %>
+                    <tr id="row-item-<%=i%>">
                         <td></td>
                         <td>
                             <i class="w-2 <%= skill.icon %>"></i> <a href="/skills/<%= skill._id %>"><%= skill.name %></a>
                         </td>
                         <td><%- skill.learned ? '<i class="fa-solid fa-check"></i>' : "" %></td>
+                        <td>
+                            <button id="row-edit-<%=i%>" class="btn btn-link hidden"><a class="link" href="/skills/update/<%= skill._id %>">edit</a></button>
+                            <a id="row-delete-<%=i%>" style="color:indianred" class="link hidden" href="/skills/<%= skill._id %>?_method=DELETE"><button id="row-edit-<%=i%>" class="btn btn-link"><i class="fa-solid fa-x"></i></button></a>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>
 
         </table>
     </div>
+
+<script>
+    function setButtonVisibility(visible, row) {
+        const editButton = document.getElementById("row-edit-" + row);
+        const deleteButton = document.getElementById("row-delete-" + row);
+
+        if (!editButton || !deleteButton) return;
+
+        if (visible) {
+            editButton.classList.remove("hidden");
+            deleteButton.classList.remove("hidden");
+        } else {
+            editButton.classList.add("hidden");
+            deleteButton.classList.add("hidden");
+        }
+
+    }
+
+    window.addEventListener("load", evt => {
+        const rows = document.querySelectorAll("tr");
+
+        // Handlers
+
+
+
+        function rowHoverHandler(evt) {
+            const target = evt.target;
+            const row = target.id.length > 0 ? target.id[target.id.length-1] : -1;
+            if (row === -1) return;
+
+            setButtonVisibility(true, row);
+        }
+
+        function rowLeaveHandler(evt) {
+            const target = evt.target;
+
+            const row = target.id.length > 0 ? target.id[target.id.length-1] : -1;
+            if (row === -1) return;
+
+            setButtonVisibility(false, row);
+        }
+
+        // Add listeners
+        rows.forEach((row, i) => {
+            if (i === 0) return;
+
+            row.addEventListener("pointerenter", rowHoverHandler);
+            row.addEventListener("pointerleave", rowLeaveHandler);
+        });
+    });
+</script>
 
 <%- include("../partials/footer") %>
