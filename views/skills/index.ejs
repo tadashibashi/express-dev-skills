@@ -30,7 +30,7 @@
                         <td><%- skill.learned ? '<i class="fa-solid fa-check"></i>' : "" %></td>
                         <td>
                             <button id="row-edit-<%=i%>" class="btn btn-link hidden"><a class="link" href="/skills/update/<%= skill._id %>">edit</a></button>
-                            <a id="row-delete-<%=i%>" style="color:indianred" class="link hidden" href="/skills/<%= skill._id %>?_method=DELETE"><button id="row-edit-<%=i%>" class="btn btn-link"><i class="fa-solid fa-x"></i></button></a>
+                            <a id="row-delete-<%=i%>" class="link hidden" href="/skills/<%= skill._id %>?_method=DELETE"><button id="row-edit-<%=i%>" class="btn btn-link"><i class="fa-solid fa-x"></i></button></a>
                         </td>
                     </tr>
                 <% }); %>
